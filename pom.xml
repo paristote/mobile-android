@@ -48,28 +48,30 @@
     <jira.project.key>MOB</jira.project.key>
     <jenkins.job.name>mobile-android-master-ci</jenkins.job.name>
     <!-- Android -->
-    <android.version>2.3.3</android.version>
-    <android.sdk.platform>10</android.sdk.platform>
-    <!-- max allowed to not have conflict with GreenDroid's ActionBar  -->
-    <android.support.version>r7</android.support.version>
-    <!-- March 2012 -->
-    <android.annotations.version>4.1.1.4</android.annotations.version>
-    <!-- Sept 2012  -->
+    <android.version>4.3_r2</android.version>
+    <android.sdk.platform>18</android.sdk.platform>
+    <!-- <android.support.version>r7</android.support.version> -->
+    <android.supportv4.version>19.0.1</android.supportv4.version>
+    <android.supportv7.version>19.0.1</android.supportv7.version>
+    <android.annotations.version>4.1.1.4</android.annotations.version><!-- Sept 2012  -->
     <!-- Libraries -->
     <commons-lang.version>2.4</commons-lang.version>
     <exo.social.client.version>1.0.0-alpha4-SNAPSHOT</exo.social.client.version>
     <slf4j-android.version>1.6.1-RC1</slf4j-android.version>
     <greendroid.version>67aa3ed</greendroid.version>
-    <!-- Test Dependencies  -->
-    <fest-android.version>1.0.7</fest-android.version>
-    <robolectric.version>2.2</robolectric.version>
-    <junit.version>4.8.2</junit.version>
-    <android.test.version>4.2.2_r2</android.test.version>
+	<!-- Test Dependencies  -->
+	<fest-android.version>1.0.7</fest-android.version>
+	<robolectric.version>2.3</robolectric.version>
+	<junit.version>4.8.2</junit.version>
+    <!-- Maven Plugins -->
+    <maven-android-plugin.plugin-version>3.7.0</maven-android-plugin.plugin-version>
+    <version.release.plugin>2.2.1</version.release.plugin>
+    <version.buildnumber.plugin>1.0</version.buildnumber.plugin>
     <!-- Java version -->
     <maven.compiler.target>1.6</maven.compiler.target>
     <maven.compiler.source>1.6</maven.compiler.source>
     <!-- Upgrade must be studied - will be required to upgrade to maven 3.1+ -->
-    <version.android.plugin>3.7.0</version.android.plugin>
+    <version.android.plugin>3.8.0</version.android.plugin>
     <!-- Surefire settings (to be compatible with jacoco we should use a property and not the plugin param) -->
     <argLine>-Xmx1024m</argLine>
   </properties>
@@ -100,28 +102,46 @@
     </dependency>
     <!-- Dependency With Android -->
     <dependency>
-      <groupId>com.google.android</groupId>
+      <groupId>android</groupId>
       <artifactId>android</artifactId>
       <version>${android.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>support-v4</artifactId>
       <version>${android.support.version}</version>
+    </dependency> -->
+    <dependency>
+      <groupId>android.support</groupId>
+      <artifactId>compatibility-v4</artifactId>
+      <version>${android.supportv4.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>annotations</artifactId>
       <version>${android.annotations.version}</version>
     </dependency>
+    <dependency>
+      <groupId>android.support</groupId>
+      <artifactId>compatibility-v7-appcompat</artifactId>
+      <version>${android.supportv7.version}</version>
+      <type>apklib</type>
+    </dependency>
+    <dependency>
+      <groupId>android.support</groupId>
+      <artifactId>compatibility-v7-appcompat</artifactId>
+      <version>${android.supportv7.version}</version>
+      <type>jar</type>
+    </dependency>
     <!-- Dependency With Greendroid library for Android -->
+    <!--
     <dependency>
       <groupId>com.greendroid</groupId>
       <artifactId>greendroid</artifactId>
       <version>${greendroid.version}</version>
       <type>apklib</type>
-    </dependency>
+    </dependency> -->
     <!-- Commons  -->
     <dependency>
       <groupId>commons-lang</groupId>
@@ -141,6 +161,7 @@
       <version>1.0</version>
       <scope>compile</scope>
     </dependency>
+
     <!-- Test Dependencies  -->
     <dependency>
       <groupId>com.squareup</groupId>
@@ -159,12 +180,6 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>android</groupId>
-      <artifactId>android</artifactId>
-      <version>${android.test.version}</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
   <build>
