@@ -20,6 +20,8 @@ package org.exoplatform.ui;
 
 import java.util.ArrayList;
 
+
+import android.util.Log;
 import org.exoplatform.R;
 import org.exoplatform.controller.home.HomeController;
 import org.exoplatform.controller.home.SocialLoadTask;
@@ -39,17 +41,13 @@ import org.exoplatform.ui.social.SocialTabsActivity;
 import org.exoplatform.utils.ExoConnectionUtils;
 import org.exoplatform.utils.ExoConstants;
 import org.exoplatform.utils.SettingUtils;
-import org.exoplatform.widget.ConnectionErrorDialog;
-import org.exoplatform.widget.HomeSocialItem;
-import org.exoplatform.widget.ShaderImageView;
-import org.exoplatform.widget.WarningDialog;
+import org.exoplatform.widget.*;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
