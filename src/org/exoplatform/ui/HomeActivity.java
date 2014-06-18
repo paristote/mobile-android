@@ -203,7 +203,6 @@ public class HomeActivity
   }
    **/
 
-
   @Override
   protected void onPause() {
     super.onPause();
